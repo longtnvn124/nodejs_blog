@@ -6,15 +6,18 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
+app.use(express.static(path.join(__dirname, 'public')))
+
 //HTTP logger
 app.use(morgan("combined"));
 
 //Template engine
 app.engine(
-  "hbs",
-  handlebars.engine({
-    extname: ".hbs",
-  })
+    "hbs",
+    handlebars.engine({
+        extname: ".hbs",
+        partialsDir: path.join(__dirname, "resources", "views", "partials"),
+    })
 );
 app.set("view engine", "hbs");
 
@@ -22,10 +25,10 @@ app.set("views", path.join(__dirname, "resources", "views"));
 
 //route
 app.get("/", (req, res) => {
-  res.render("home");
+    res.render("home");
 });
 app.get("/news", (req, res) => {
-  res.render("news");
+    res.render("news");
 });
 
 app.listen(port, () => {
@@ -33,3 +36,4 @@ app.listen(port, () => {
 })
 
 //127.0.0.1 - localhot
+
