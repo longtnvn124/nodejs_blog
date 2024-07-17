@@ -5,10 +5,6 @@ function route(app) {
     app.use('/news', newsRouter);
     app.use('/', siteRouter);
 
-    
-
-
-
 
 }
 
