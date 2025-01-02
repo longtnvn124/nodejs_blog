@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
-async function connect() {
+function connect() {
     try {
-        await mongoose.connect('mongodb://localhost:27017/f8_education_dev', {
-
+        mongoose.connect('mongodb://localhost:27017/f8_education_dev',{
+            usrNewUrlParSer:true,
+            useUnifiedTopology:true
         });
         console.log('Connect DB Successfully !');
     } catch (error) {
